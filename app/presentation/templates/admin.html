@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Admin - Nueva pieza{% endblock %}
+{% block content %}
+  <h2>Agregar nueva pieza</h2>
+
+  {% if error %}
+    <div class="alert">{{ error }}</div>
+  {% endif %}
+
+  <form class="form" method="post">
+    <label>Título *</label>
+    <input name="title" required maxlength="180" placeholder="Ej. Soporte para cámara / Clip / Engrane" />
+
+    <label>Descripción</label>
+    <textarea name="description" rows="5" placeholder="Detalles, material recomendado, notas de impresión..."></textarea>
+
+    <label>Tags (separados por coma)</label>
+    <input name="tags" placeholder="ej. resin, fdm, soporte, cosplay" />
+
+    <label>Image URL *</label>
+    <input name="image_url" required placeholder="https://..." />
+
+    <label>Download URL *</label>
+    <input name="download_url" required placeholder="https://drive.google.com/... o https://cults3d.com/..." />
+
+    <button class="btn" type="submit">Guardar</button>
+  </form>
+
+  <p class="muted">Ruta protegida con Basic Auth. En Render define ADMIN_USER y ADMIN_PASS.</p>
+{% endblock %}

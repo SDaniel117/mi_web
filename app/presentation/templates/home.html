@@ -1,6 +1,23 @@
 {% extends "base.html" %}
-{% block title %}Inicio{% endblock %}
+{% block title %}Catálogo 3D{% endblock %}
 {% block content %}
-  <h2>Inicio</h2>
-  <p>{{ msg }}</p>
+  <h2>Catálogo de piezas 3D</h2>
+
+  {% if pieces|length == 0 %}
+    <p>Aún no hay piezas. Entra a <code>/admin</code> para agregar la primera.</p>
+  {% endif %}
+
+  <div class="grid">
+    {% for p in pieces %}
+      <a class="card" href="/piezas/{{p.id}}">
+        <img class="thumb" src="{{ p.image_url }}" alt="{{ p.title }}" loading="lazy">
+        <div class="card-body">
+          <div class="title">{{ p.title }}</div>
+          {% if p.tags %}
+            <div class="tags">{{ p.tags }}</div>
+          {% endif %}
+        </div>
+      </a>
+    {% endfor %}
+  </div>
 {% endblock %}

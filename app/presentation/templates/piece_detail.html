@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ piece.title }}{% endblock %}
+{% block content %}
+  <a href="/">← Volver</a>
+  <h2>{{ piece.title }}</h2>
+
+  <div class="detail">
+    <img class="detail-img" src="{{ piece.image_url }}" alt="{{ piece.title }}">
+    <div>
+      {% if piece.tags %}
+        <div class="tags">{{ piece.tags }}</div>
+      {% endif %}
+      {% if piece.description %}
+        <p class="desc">{{ piece.description }}</p>
+      {% endif %}
+
+      <a class="btn" href="{{ piece.download_url }}" target="_blank" rel="noopener">
+        Descargar / Ver link
+      </a>
+
+      <p class="muted">Tip: si es Google Drive, pon el archivo en “Cualquiera con el enlace”.</p>
+    </div>
+  </div>
+{% endblock %}
