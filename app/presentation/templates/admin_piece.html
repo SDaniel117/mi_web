@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Admin - Nueva pieza{% endblock %}
+{% block content %}
+  <h2>Agregar pieza a: {{ catalog.title }}</h2>
+  {% if error %}<div class="alert">{{ error }}</div>{% endif %}
+
+  <form class="form" method="post">
+    <label>Título *</label>
+    <input name="title" required maxlength="180" />
+
+    <label>Descripción</label>
+    <textarea name="description" rows="5"></textarea>
+
+    <label>Tags (coma)</label>
+    <input name="tags" />
+
+    <label>Image URL *</label>
+    <input name="image_url" required placeholder="https://..." />
+
+    <label>Download URL *</label>
+    <input name="download_url" required placeholder="https://drive... o https://cults3d..." />
+
+    <button class="btn" type="submit">Guardar pieza</button>
+  </form>
+
+  <p class="muted">Tip: Admin URL para esta pantalla: <code>/admin/catalogos/{{catalog.id}}/piezas</code></p>
+{% endblock %}

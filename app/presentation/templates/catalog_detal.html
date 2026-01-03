@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ catalog.title }}{% endblock %}
+{% block content %}
+  <a href="/">← Volver a catálogos</a>
+  <h2>{{ catalog.title }}</h2>
+
+  <div class="detail">
+    <img class="detail-img" src="{{ catalog.image_url }}" alt="{{ catalog.title }}">
+    <div>
+      {% if catalog.tags %}<div class="tags">{{ catalog.tags }}</div>{% endif %}
+      {% if catalog.description %}<p class="desc">{{ catalog.description }}</p>{% endif %}
+
+      <p class="muted">Este catálogo contiene {{ pieces|length }} pieza(s).</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:18px;">Piezas</h3>
+  {% if pieces|length == 0 %}
+    <p>Aún no hay piezas en este catálogo.</p>
+  {% endif %}
+
+  <div class="grid">
+    {% for p in pieces %}
+      <a class="card" href="/piezas/{{p.id}}">
+        <img class="thumb" src="{{ p.image_url }}" alt="{{ p.title }}" loading="lazy">
+        <div class="card-body">
+          <div class="title">{{ p.title }}</div>
+          {% if p.tags %}<div class="tags">{{ p.tags }}</div>{% endif %}
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}
