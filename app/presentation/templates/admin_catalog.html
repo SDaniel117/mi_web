@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Admin - Nuevo catálogo{% endblock %}
+{% block content %}
+  <h2>Crear catálogo</h2>
+  {% if error %}<div class="alert">{{ error }}</div>{% endif %}
+
+  <form class="form" method="post">
+    <label>Título *</label>
+    <input name="title" required maxlength="180" />
+
+    <label>Descripción</label>
+    <textarea name="description" rows="5"></textarea>
+
+    <label>Tags (coma)</label>
+    <input name="tags" />
+
+    <label>Image URL (portada) *</label>
+    <input name="image_url" required placeholder="https://..." />
+
+    <button class="btn" type="submit">Crear catálogo</button>
+  </form>
+{% endblock %}
